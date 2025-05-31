@@ -5,7 +5,7 @@ metadata:
   labels:
     app: students-getbyid-service
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: students-getbyid-service
@@ -16,10 +16,9 @@ spec:
     spec:
       containers:
         - name: students-getbyid-service
-          image: students-getbyid-service:latest
-          imagePullPolicy: Never
-          ports:
-            - containerPort: 8082
+          image: hamiltonlg/p-spring-getbyid-service:main
+          ports:  
+            - containerPort: 8083
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:mariadb://mariadb-service:3306/studentsdb
